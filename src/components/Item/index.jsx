@@ -1,27 +1,34 @@
 import React, { Component } from 'react'
+import './index.css'
 
 export default class index extends Component {
+  
+  state = {
+    mouse: false
+  }
+
+  handleMouse = (flag)=> {
+    return ()=> {
+      this.setState({mouse: flag})
+    }
+  }
+
+  handleCheck = ()=>{
+    
+  }
+
   render() {
-    const { todos } = this.props
-    console.log(todos)
+    const {name, done} = this.props
+    const {mouse} = this.state
+
     return (
-      <div>
-        <ul className='todo-item'>
-          {
-            todos.map((item, index) => {
-              return (
-                <li key={item.id}>
-                  <label>
-                    <input type="text" />
-                    <span>{item.name}</span>
-                  </label>
-                  <button className='btn btn-danger' style={{display: 'none'}}>删除</button>
-                </li>
-              )
-            })
-          }
-        </ul>
-      </div>
+      <li style={{background: mouse ? '#ddd' : 'white'}} onMouseLeave={this.handleMouse(false)} onMouseEnter={this.handleMouse(true)}>
+        <label>
+          <input type="checkbox" defaultChecked={done} style={{width: '30px'}} onChange={this.handleCheck} />
+          <span>{name}</span>
+        </label>
+        <button className='btn btn-danger' style={{display: 'none'}}>删除</button>
+      </li>
     )
   }
 }

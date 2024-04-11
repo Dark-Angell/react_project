@@ -1,67 +1,24 @@
-// import logo from './logo.svg';
-// import './App.css';
+import React, { Component } from 'react'
+import { Link, Route, Redirect } from 'react-router-dom'
+import About from './components2/About'
+import Home from './components2/Home'
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-import React from "react";
-import Header from "./components/Header"
-import List from './components/List'
-import Footer from './components/Footer'
-
-class App extends React.Component {
-  state = {
-    todos: [
-      {
-        id: '001',
-        name: '吃饭',
-        done: true
-      },
-      {
-        id: '002',
-        name: '睡觉',
-        done: true
-      },
-      {
-        id: '003',
-        name: '睡觉',
-        done: false
-      }
-    ]
-  }
-
-  render(){
-    const {todos} = this.state
-    
+export default class App extends Component {
+  render() {
     return (
       <div>
-        <Header />
-        <List todos={todos} />
-        <Footer />
+
+          <Link className="list-group-item" to="/about" style={{marginRight: '30px'}}>About</Link>
+          <Link className="list-group-item" to="/home">Home</Link>
+
+
+        <div>
+
+            <Route path="/about" component={About}></Route>    
+            <Route path="/home" component={Home}></Route>          
+            <Redirect to="/about" />
+        </div>
       </div>
     )
   }
 }
-
-export default App
-
-
