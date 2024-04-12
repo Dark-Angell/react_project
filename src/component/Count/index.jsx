@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import store from '../../redux/store'
 
 export default class index extends Component {
 
@@ -7,41 +6,33 @@ export default class index extends Component {
     
   }
 
-  componentDidMount() {
-    store.subscribe(() => {
-      this.setState({})
-    })
-  }
 
   increment = () => {
     const {value} = this.selectNumber
-    store.dispatch({type: 'increment', data: value * 1})
+    this.props.increment(value * 1)
   }
 
   decrement = () => {
     const {value} = this.selectNumber
-    store.dispatch({type: 'increment', data: value * 1})
+    this.props.decrement(value * 1)
   }
 
-  decrementIfOdd = () => {
+  incrementIfOdd = () => {
     const {value} = this.selectNumber
-    const count = store.getState()
-    if(count % 2 !== 0) {
-      store.dispatch({type: 'increment', data: value * 1})
+    if(this.props.count % 2 !== 0 ) {
+      this.props.increment(value * 1)
     }
   }
 
-  decrementAsync = () => {
+  incrementAsync = () => {
     const {value} = this.selectNumber
-    setTimeout(() => {
-      store.dispatch({type: 'increment', data: value * 1})
-    }, 2000)
+    this.props.incrementAsync(value * 1, 500)
   }
 
   render() {
     return (
       <div>
-        <h1>当前求和为：{store.getState()}</h1>
+        <h1>当前求和为:{this.props.count}</h1>
         <select ref={c =>this.selectNumber = c}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -49,8 +40,8 @@ export default class index extends Component {
         </select>&nbsp;
         <button onClick={this.increment}>+</button>&nbsp;
         <button onClick={this.decrement}>-</button>&nbsp;
-        <button onClick={this.decrementIfOdd}>基数求和</button>&nbsp;
-        <button onClick={this.decrementAsync}>异步求和</button>&nbsp;
+        <button onClick={this.incrementIfOdd}>基数求和</button>&nbsp;
+        <button onClick={this.incrementAsync}>异步求和</button>&nbsp;
       </div>
     )
   }
