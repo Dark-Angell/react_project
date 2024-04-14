@@ -1,0 +1,1 @@
+export const creadAddPersonAction = (data) => ({type: 'btnAdd', data})

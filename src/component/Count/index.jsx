@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 
 export default class index extends Component {
 
-  state = {
-    
-  }
-
 
   increment = () => {
     const {value} = this.selectNumber
@@ -32,7 +28,9 @@ export default class index extends Component {
   render() {
     return (
       <div>
+        <h2>我是 count 组件</h2>
         <h1>当前求和为:{this.props.count}</h1>
+        <h1>下方人数为：{this.props.renshu.length}</h1>
         <select ref={c =>this.selectNumber = c}>
           <option value="1">1</option>
           <option value="2">2</option>
