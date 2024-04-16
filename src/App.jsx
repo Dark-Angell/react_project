@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import Count from './containers/count'   // 容器组件
 import Person from './containers/Person'   // 容器组件
 
-// import SetState from './containers/SetState'
+import SetState from './containers/SetState'
 import UseStateHooks from './containers/Hooks/useState'
+import Context from './containers/Context'
+import RenderProps from './containers/RenderProps'
+import Error from './containers/Error'
+import Ref from './containers/Ref'
 
 export default class App extends Component {
   render() {
@@ -17,7 +21,15 @@ export default class App extends Component {
         {/* setSate */}
         {/* <SetState /> */}
 
-        <UseStateHooks />
+        {/* <UseStateHooks /> */}
+
+        {/* <Context></Context> */}
+
+        {/* <RenderProps></RenderProps> */}
+
+        {/* <Error></Error> */}
+
+        <Ref></Ref>
       </div>
     )
   }
