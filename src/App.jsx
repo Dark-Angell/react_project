@@ -8,6 +8,8 @@ import Context from './containers/Context'
 import RenderProps from './containers/RenderProps'
 import Error from './containers/Error'
 import Ref from './containers/Ref'
+import Event from './containers/Event'
+import Router from './containers/Router'
 
 export default class App extends Component {
   render() {
@@ -29,7 +31,12 @@ export default class App extends Component {
 
         {/* <Error></Error> */}
 
-        <Ref></Ref>
+        {/* <Ref></Ref> */}
+
+        {/* <Event></Event> */}
+
+        <Router></Router>
+
       </div>
     )
   }
